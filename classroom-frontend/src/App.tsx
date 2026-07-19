@@ -15,9 +15,6 @@ import routerProvider, {
   DocumentTitleHandler,
 } from "@refinedev/react-router";
 import { dataProvider } from "./providers/data";
-import { Login } from "./pages/login";
-import { Register } from "./pages/register";
-import { ForgotPassword } from "./pages/forgot-password";
 import { ErrorComponent } from "./components/refine-ui/layout/error-component";
 import { Layout } from "./components/refine-ui/layout/layout";
 import { Header } from "./components/refine-ui/layout/header";
@@ -29,6 +26,7 @@ import Dashboard from "@/pages/dashboard.tsx";
 import {BookOpen, Home} from "lucide-react";
 import SubjectsLists from "@/pages/subjects/lists.tsx";
 import SubjectsCreate from "@/pages/subjects/create.tsx";
+import SubjectsShow from "@/pages/subjects/show.tsx";
 function App() {
   return (
     <BrowserRouter>
@@ -56,6 +54,7 @@ function App() {
                   name: "subjects",
                   list: "/subjects",
                   create: "/subjects/create",
+                  show: "/subjects/show/:id",
                   meta: {
                     label: "subjects", icon: <BookOpen />
                   }
@@ -74,6 +73,7 @@ function App() {
                   <Route path={"/subjects"}>
                     <Route index element={<SubjectsLists />} />
                     <Route path="create" element={<SubjectsCreate />} />
+                    <Route path="show/:id" element={<SubjectsShow />} />
                   </Route>
                 </Route>
               </Routes>
